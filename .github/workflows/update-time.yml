@@ -2,8 +2,8 @@ name: Update Time File
 
 on:
   schedule:
-    - cron: '0 * * * *'  # Toutes les heures
-  workflow_dispatch:  # Permet de déclencher manuellement le workflow
+    - cron: '*/5 * * * *'  # Toutes les 5 minutes
+  workflow_dispatch:  # Permet de déclencher manuellement
 
 jobs:
   update-file:
@@ -16,11 +16,10 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: '3.9'  # Version de Python à utiliser
+        python-version: '3.9'
 
     - name: Run Python script
-      run: |
-        python generate_time.py
+      run: python generate_time.py
 
     - name: Commit and push changes
       run: |
