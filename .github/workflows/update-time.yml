@@ -2,8 +2,11 @@ name: Update Time File
 
 on:
   schedule:
-    - cron: '*/5 * * * *'  # Toutes les 5 minutes
+    - cron: '*/2 * * * *'  # Toutes les 5 minutes
   workflow_dispatch:  # Permet de déclencher manuellement
+
+permissions:
+  contents: write  # Donne des permissions d'écriture au GITHUB_TOKEN
 
 jobs:
   update-file:
