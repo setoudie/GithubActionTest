@@ -2,7 +2,7 @@ name: Update Time File
 
 on:
   schedule:
-    - cron: '*/2 * * * *'  # Toutes les 5 minutes
+    - cron: '*/2 * * * *'  # Toutes les 2 minutes
   workflow_dispatch:  # Permet de déclencher manuellement
 
 permissions:
@@ -25,6 +25,8 @@ jobs:
       run: python generate_time.py
 
     - name: Commit and push changes
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Utilise le token par défaut
       run: |
         git config --global user.name "github-actions[bot]"
         git config --global user.email "github-actions[bot]@users.noreply.github.com"
